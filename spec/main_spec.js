@@ -1,6 +1,4 @@
 "use strict";
-const _data = require('./data.js');
-const data = _data.getData();
 var _ = require("lodash");
 var chai = require("chai");
 var sinon = require("sinon");
@@ -14,43 +12,38 @@ var main = require("../lib/main.js");
 describe("测试描述", function(){
     sinon.spy(console, 'log');
 
-    it("input 2 get the last Lyrics", function(){
+    it("input '95713' get '||:|:::|:|:|:::|:::||::||::|:|:|'", function(){
 
-        var result = main(2);
-        var expect_string = `2 bottles of beer on the wall, 2 bottles of beer.
-Take one down and pass it around, 1 bottle of beer on the wall.`;
+        var result = main('95713');
+        var expect_string = '||:|:::|:|:|:::|:::||::||::|:|:|';
         
-        expect(expect_string).to.equal(result);
+        expect(result).to.equal(expect_string);
     });
 
+   it("input '12345-6789' get '|:::||::|:|::||::|::|:|:|::||::|:::||::|:|:|:::|:|:|'", function(){
 
-    it("input 1 get the bottommost Lyrics", function(){
+        var result = main('12345-6789');
+        var expect_string = '|:::||::|:|::||::|::|:|:|::||::|:::||::|:|:|:::|:|:|';
 
-        var result = main(1);
-        var expect_string = `1 bottle of beer on the wall, 1 bottle of beer.
-Take one down and pass it around, no more bottles of beer on the wall.
-No more bottles of beer on the wall, no more bottles of beer.
-Go to the store and buy some more, 99 bottles of beer on the wall.`;
+        expect(result).to.equal(expect_string);
+    });
+
+    it("input '||:|:::|:|:|:::|:::||::||::|:|:|' get '95713'", function(){
+
+        var result = main('||:|:::|:|:|:::|:::||::||::|:|:|');
+        var expect_string = '95713';
         
-        expect(expect_string).to.equal(result);
+        expect(result).to.equal(expect_string);
     });
 
-    it("get all lyrics", function(){
+   it("input '|:::||::|:|::||::|::|:|:|::||::|:::||::|:|:|:::|:|:|' get '12345-6789'", function(){
 
-        var result = main(99);
-        var expect_string = data;
-        
-        expect(expect_string).to.equal(result);
+        var result = main('|:::||::|:|::||::|::|:|:|::||::|:::||::|:|:|:::|:|:|');
+        var expect_string = '12345-6789';
+
+        expect(result).to.equal(expect_string);
     });
-/*
 
-    it("测试用例2", function(){
 
-        main();
-        var result = _.flatten(console.log.args).join("\n");
-        var expect_string = '';
 
-        expect(expect_string).to.equal(result);
-    });
- */
 });
