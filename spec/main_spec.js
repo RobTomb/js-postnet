@@ -20,6 +20,14 @@ describe("测试描述", function(){
         expect(result).to.equal(expect_string);
     });
 
+    it("input '95763' get '||:|:::|:|:|:::|:|:|:::||:||:::|'", function(){
+
+        var result = main('95763');
+        var expect_string = '||:|:::|:|:|:::|:||::::||:||:::|';
+        
+        expect(result).to.equal(expect_string);
+    });
+
    it("input '12345-6789' get '|:::||::|:|::||::|::|:|:|::||::|:::||::|:|:|:::|:|:|'", function(){
 
         var result = main('12345-6789');
@@ -36,14 +44,12 @@ describe("测试描述", function(){
         expect(result).to.equal(expect_string);
     });
 
-   it("input '|:::||::|:|::||::|::|:|:|::||::|:::||::|:|:|:::|:|:|' get '12345-6789'", function(){
+    it("input '|:::||::|:|::||::|::|:|:|::||::|:::||::|:|:|:::|:|:|' get '12345-6789'", function(){
 
         var result = main('|:::||::|:|::||::|::|:|:|::||::|:::||::|:|:|:::|:|:|');
         var expect_string = '12345-6789';
 
         expect(result).to.equal(expect_string);
     });
-
-
 
 });
